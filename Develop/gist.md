@@ -84,7 +84,24 @@ Quantifiers specify how many instances of a character, group or a character clas
 
 ### OR Operator
 
+Alternation (more commonly known as the OR operator) is denoted with the vertical line charcter `|`. Alternation matches anything as long as it meets one of it's expressions. It's straight forward to apply and easy to grasp. 
 
+```js
+const greyText = "grey";
+
+const grayText = "gray";
+
+console.log(/gr(e|a)y/.test(greyText));
+
+// Output: true
+
+console.log(/gr(e|a)y/.test(grayText));
+
+// Output: true
+
+```
+
+Above you can see it matches both strings as it accepts either `grey` or `gray`. Be careful as the brackets affect how it functions. `gre|ay` matches either `gre` or `ay`.
 
 ### Character Classes
 
@@ -99,12 +116,14 @@ const regexMatch = /\w+[-]\w+/;
 
 console.log(text.match(regexMatch)); 
 
-// Output: Array["non-profit"]
+// Output: Array ["non-profit"]
 ```
 
 You can see how it matches for a literal hyphen in this case.
 
 ### Flags
+
+Flags are options that allow for further functionality when matching regex expressions like `global searching` and `case insensitive searching`. Flags can be used seperately or together in any order and are included as part of the regex.
 
 ### Grouping and Capturing
 
