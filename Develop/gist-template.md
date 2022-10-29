@@ -33,7 +33,7 @@ Anchors have a special meaning in regular expressions. They don't match any char
 ```
 /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/
 ```
-The caret anchor `^` is to match the beginning of a string. In this example it's used to make sure only the email is submitted with no whitespaces at the beginning. Similarly the dollar sign anchor `$` matches the end of a string. Here it is used to make sure whitespaces trail the email. An example of this in action looks like this.
+The caret anchor `^` is to match the beginning of a string. In this example it's used to make sure only the email is submitted with no whitespaces at the beginning. Similarly the dollar sign anchor `$` matches the end of a string. Here it is used to make sure no whitespaces trail the email. An example of this in action looks like this:
 
 ``` js
 let string = " Regex example test";
@@ -80,11 +80,29 @@ console.log(/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/.test(email2));
 
 ### Quantifiers
 
-
+Quantifiers specify how many instances of a character, group or a character class must be present for a match to be found. The quantifier used in our example is the `+` quantifier. It matches the preceding element one or more times. For example `/a+/` would match the `a` in `apple` and all `a`'s in `aaaaaaaaaaaaapple`. Here it's used in front of the character classes `[a-z0-9_\.-]` and `[\da-z\.-]` to match for them one or multiple times. 
 
 ### OR Operator
 
+
+
 ### Character Classes
+
+A character class matches any charcters/elements enclosed in the `[ ]`. Character classes also let you specify a range of characters using a hypen except when you use a hyphen as the first or last character in the character class. In that case it is interpreted as a literal hyphen. `[0-9]` matches for `0`, `1`, `2`, `3`, ... `8`, `9`. Similarly `[a-z]` matches for `a` through `z`. 
+
+However the hyphen behaves a little differently in the example below.
+
+```js
+const textExample = "American Red Cross is one of the most popular non-profit organisations."
+
+const regexMatch = /\w+[-]\w+/; 
+
+console.log(text.match(regexMatch)); 
+
+// Output: Array["non-profit"]
+```
+
+You can see how it matches for a literal hyphen in this case.
 
 ### Flags
 
