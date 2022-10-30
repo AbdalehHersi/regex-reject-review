@@ -232,6 +232,16 @@ To `not` match a word boundary, you could use `\B`. It matches any position that
 
 ### Back-references
 
+Backreferences provide a convenient way to reference a repeated character or substring within a string. For example, if an input string contains multiple appearences of a substring, you can match the first instance with a capturing group `()`, and then use a backreference to match subsequent occurrences of the substring. To use a backreference, use the following syntax:
+
+```js
+\number     // where number is the position of the capturing group
+```
+
+```js
+/apple(,)\sorange\1/    // matches "apple, orange" in "apple, orange, cherry, peach"
+```
+
 ### Look-ahead and Look-behind
 
 ## Author
