@@ -218,6 +218,18 @@ The second regex is more inline with what was intended. Instead of matching anyt
 
 ### Boundaries
 
+Boundaries indicate the beginning and endings of lines of words. We've already taken a look at two boundary-type assertions, the [^](#anchors) sign and the [$](#anchors) sign, but there are two more options to match boundaries. `\b` matches a word boundary (where a word character is not followed or preceded by another word-character like between a letter, a new space or a new line).
+
+```js
+/\bm/  // matches "m" in " moon"
+```
+
+To `not` match a word boundary, you could use `\B`. It matches any position that is not a a word boundary.
+
+```js
+/\Bm/ // does not match "m" in moon
+```
+
 ### Back-references
 
 ### Look-ahead and Look-behind
