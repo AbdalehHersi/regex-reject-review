@@ -137,6 +137,45 @@ console.log(text.match(/e/g));
 
 ### Grouping and Capturing
 
+Groups group multiple patterns as a whole, and capturing groups provide extra submatch information when using regex to match against a string. Capturing groups match `[x]` and remembers the regex match. The syntax used for capturing groups is `()`. If you match for `/(foo)/`, it not only matches but remembers both `foo` in `foobar` and `foo` in `food`.
+
+```js
+const imageDescription = 'This image has a resolution of 1440×900 pixels.';
+
+const regexpSize = /([0-9]+)×([0-9]+)/;
+
+const match = imageDescription.match(regexpSize);
+
+console.log(`Width: ${match[1]} / Height: ${match[2]}.`);
+
+// expected output: "Width: 1440 / Height: 900."
+```
+
+Above you can see how it remembers both matches and allows you to reference them separately via match[`1`] and match[`2`]. Let's take a look at how this applies to our example: 
+```js
+/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/
+```
+
+There are three capturing groups in our regex with their own self-contained matches.
+
+```js
+/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/
+      // [1]         // [2]         // [3]
+```
+
+In the example below take note of how there are three different submatches: 
+
+```js
+const emailMatch = 'testemail@email.com';
+
+const regexpEmail = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
+
+const match = emailMatch.match(regexpEmail);
+
+console.log(`Capturing group 1: ${match[1]} / Capturing group 2: ${match[2]} / Capturing group 3: ${match[3]}`); 
+
+// Output: Capturing group 1: testemail / Capturing group 2: email / Capturing group 3: com
+```
 ### Bracket Expressions
 
 ### Greedy and Lazy Match
