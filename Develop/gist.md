@@ -244,6 +244,32 @@ Backreferences provide a convenient way to reference a repeated character or sub
 
 ### Look-ahead and Look-behind
 
+Look-ahead and look-behind (also known as lookarounds) assertions allow you to match anything ahead/behind your targeted character/substring. It is also important to note that a lookahead or a lookbehind does not "consume" any characters on the string. This means that after the lookahead or lookbehind's closing parenthesis, the regex engine is left standing on the very same spot in the string from which it started looking: it hasn't moved.
+
+There are four types of lookarounds:
+
+`(?=foo)` Lookahead: Asserts that what immediately follows the current position in the string is foo
+
+`(?<=foo)` Lookbehind: Asserts that what immediately precedes the current position in the string is foo
+
+`(?!foo)` Negative Lookahead: Asserts that what immediately follows the current position in the string is not foo
+
+`(?<!foo>)` Negative Lookbehind: Asserts that what immediately precedes the current position in the string is not foo
+
+Here is an example:
+
+```js
+const text = "The fat cat ran down the street";
+
+const regexMatch = /(?<=[tT]he)./;
+
+console.log(text.match(regexMatch));
+
+// Output: Array [" "]
+
+// returns word boundary that has "the"/"The" preceding it
+```
+
 ## Author
 
 If you liked this gist you can fork it or star it on it's github repository. You can also find me on [github](https://github.com/AbdalehHersi)
