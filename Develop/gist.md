@@ -75,7 +75,6 @@ var email2 = " testemail@email.com ";
 console.log(/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/.test(email2));
 
 // Output: false
-
 ```
 
 ### Quantifiers
@@ -98,7 +97,6 @@ console.log(/gr(e|a)y/.test(greyText));
 console.log(/gr(e|a)y/.test(grayText));
 
 // Output: true
-
 ```
 
 Above you can see it matches both strings as it accepts either `grey` or `gray`. Be careful as the brackets affect how it functions. `gre|ay` matches either `gre` or `ay`.
@@ -123,7 +121,19 @@ You can see how it matches for a literal hyphen in this case.
 
 ### Flags
 
-Flags are options that allow for further functionality when matching regex expressions like `global searching` and `case insensitive searching`. Flags can be used seperately or together in any order and are included as part of the regex.
+Flags are options that allow for further functionality when matching regex expressions like `global searching` and `case insensitive searching`. Flags can be used seperately or together in any order and are included as part of the regex. For example `/e/g` matches for the letter `e` across the whole string due to the `g` (global) flag.
+
+```js
+const text = "The quick brown fox jumped over the lazy dog."
+
+console.log(text.match(/e/)); 
+
+// Output: Array [ "e" ]
+
+console.log(text.match(/e/g)); 
+
+// Output: Array(4) ["e", "e", "e", "e" ]
+```
 
 ### Grouping and Capturing
 
