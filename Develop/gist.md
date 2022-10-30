@@ -272,4 +272,4 @@ console.log(text.match(regexMatch));
 
 ## Author
 
-If you liked this gist you can fork it or star it on it's github repository. You can also find me on [github](https://github.com/AbdalehHersi)
+If you liked this gist you can fork it or star it on it's github [repository](https://github.com/AbdalehHersi/regex-reject-review). You can also find me on [github](https://github.com/AbdalehHersi)
