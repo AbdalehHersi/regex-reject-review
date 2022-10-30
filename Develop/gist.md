@@ -178,7 +178,43 @@ console.log(`Capturing group 1: ${match[1]} / Capturing group 2: ${match[2]} / C
 ```
 ### Bracket Expressions
 
+There are three types of brackets used in regular expressions. `[]`, `()` and `{}`. Square brackets `[]` represent [charcter classes](#character-classes) while parenthesis represent [grouping and capturing](#grouping-and-capturing). We've already taken a look at both in the sections above. The last one, curly brackets `{}`, is used to specify the amount of times to match for.
+
+```js
+"panama".match(/na{2}/) // no matches
+
+"banana".match(/na{2}/) // matches "nana"
+```
+
+Depending on what you encase in `{}` you can define a minimum number of matches and a maximum. Let's take a snippet from our example:
+
+```js
+/([a-z\.]{2,6})/
+```
+
+Here the curly braces is used to match for whatever is in the character classes a minimum of `2` times and a maximum of `6` times.
+
 ### Greedy and Lazy Match
+
+By default quantifiers like `*` and `+` are "greedy", meaning they try to match as much of the string as possible. The `?` character after the quantifier makes it "non-greedy" or "lazy" meaning it will match as little as possible.
+
+```js
+const text = "some <foo> <bar> new </bar> </foo> thing"; 
+
+const greedyMatch = /<.*>/;
+
+const lazyMatch = /<.*?>/;
+
+console.log(text.match(greedyMatch));
+
+// Output: Array [ "<foo> <bar> new </bar> </foo>" ]
+
+console.log(text.match(lazyMatch));
+
+// Output: Array [ "<foo>" ]
+```
+
+The second regex is more inline with what was intended. Instead of matching anything between the first `<` and the last `>` regardless of the content in between, it matches the first two `< >` signs.
 
 ### Boundaries
 
